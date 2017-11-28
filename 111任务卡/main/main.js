@@ -1,58 +1,52 @@
-
-// module.exports = function practice() {
+// var practice = function () {
+//     var num;
 //     var str = "";
 
-//     for(var i = 99; i >= 1; i--) {
-//         if(i > 2) {
-//             str += i + " bottles of beer on the wall, " + i + " bottles of beer.\n" +
-//                 "Take one down and pass it around, " + (i - 1) + " bottles of beer on the wall.\n";
-//         }
-//         else  if(i == 2) {
-//              str += i + " bottles of beer on the wall, " + i + " bottles of beer.\n" +
-//                 "Take one down and pass it around, " + (i - 1) + " bottle of beer on the wall.\n";
-//         }
-//         else {
-//             str += "1 bottle of beer on the wall, 1 bottle of beer.\n" +
-//                     "Take one down and pass it around, no more bottles of beer on the wall.\n"  +
-//                     "No more bottles of beer on the wall, no more bottles of beer.\n" +
-//                     "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+//     for(num = 99; num > 1; num --){
+//         if(num>2) {
+//             str += num + " bottles of beer on the wall, " + num + " bottles of beer.\n" +
+//                 "Take one down and pass it around, " + (num - 1) + " bottles of beer on the wall.\n"
+//         }else  if(num===2){
+//              str += num + " bottles of beer on the wall, " + num + " bottles of beer.\n" +
+//                 "Take one down and pass it around, " + (num - 1) + " bottle of beer on the wall.\n"
 //         }
 //     }
 
+//     str += "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+//            "Take one down and pass it around, no more bottles of beer on the wall.\n"  +
+//            "No more bottles of beer on the wall, no more bottles of beer.\n" +
+//            "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+
 //     return str;
-// };
+// }
 
+// module.exports = practice;
 
-var printCommonLyrics = function(num) {
-    var str = "";
-    for(var i = num; i > 2; i--) {
-        str += i + " bottles of beer on the wall, " + i + " bottles of beer.\n" +
-                "Take one down and pass it around, " + (i - 1) + " bottles of beer on the wall.\n";
-    }
-    return str
-}
-
-var printSpecialLyrics_2 = function(num) {
-    var str = "";
-    str = "2 bottles of beer on the wall, 2 bottles of beer.\n" +
-        "Take one down and pass it around, 1 bottle of beer on the wall.\n";
-    return str;
-}
-
-module.exports.practice = function practice(num) {
-    var number = 99;
-    var CommonLyrics = printCommonLyrics(number);
+module.exports = function practice(num) {
     
-    // for(var i = 2; i >= 0; i--) {
-    //     if(i == 2) {
-    //         var SpecialLyrics_2 = printSpecialLyrics_2(i);
-    //         return SpecialLyrics_2;
-    //     }
-    // }
-    var num = 2;
-    if(num == 2) {
-        var SpecialLyrics_2 = printSpecialLyrics_2(num);
-        return SpecialLyrics_2;
+    var str = "";
+    for(var i = num; i >= 0; i--) {
+        if(i > 2) {
+            for(num = i; num > 2; num--) {
+                str += num + " bottles of beer on the wall, " + num + " bottles of beer.\n" +
+                        "Take one down and pass it around, " + (num - 1) + " bottles of beer on the wall.\n" ;
+            }
+            return str;
+        }
+        else if(i == 2) {
+            var str_2 = i + " bottles of beer on the wall, " + i + " bottles of beer.\n" +
+                    "Take one down and pass it around, " + (i - 1) + " bottle of beer on the wall.\n" 
+            return str_2;
+        }
+        else if(i == 1) {
+            var str_1 = i + " bottle of beer on the wall, "+ i +" bottle of beer.\n" +
+                        "Take one down and pass it around, no more bottles of beer on the wall.\n";
+            return str_1;
+        }
+        else if(i == 0) {
+            var str_0 = "No more bottles of beer on the wall, no more bottles of beer.\n" +
+                        "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+            return str_0;
+        }
     }
-    return CommonLyrics;
-} 
+}
