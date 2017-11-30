@@ -406,10 +406,18 @@ describe("compare Lyrics", function() {
         "4 bottles of beer on the wall, 4 bottles of beer.\n" +
         "Take one down and pass it around, 3 bottles of beer on the wall.\n" +
         "3 bottles of beer on the wall, 3 bottles of beer.\n" +
-        "Take one down and pass it around, 2 bottles of beer on the wall.\n";
+        "Take one down and pass it around, 2 bottles of beer on the wall.\n" +
+        "2 bottles of beer on the wall, 2 bottles of beer.\n" +
+        "Take one down and pass it around, 1 bottle of beer on the wall.\n" +
+        "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+        "Take one down and pass it around, no more bottles of beer on the wall.\n" +
+        "No more bottles of beer on the wall, no more bottles of beer.\n" +
+        "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
     it("return string equal to many Lyrcis (99)", function() {
-            var expect_99 = practice(99);
-            expect(expect_99).toEqual(expectCommonLyrics);
+        var expectLyrics_99 = "99 bottles of beer on the wall, 99 bottles of beer.\n" +
+                            "Take one down and pass it around, 98 bottles of beer on the wall.\n";
+        var expect_99 = practice(99);
+        expect(expect_99).toEqual(expectLyrics_99);
     });
 
     var expectLyrics_2 = "2 bottles of beer on the wall, 2 bottles of beer.\n" +
@@ -432,4 +440,12 @@ describe("compare Lyrics", function() {
         var expect_0 = practice(0);
         expect(expect_0).toEqual(expectLyrics_0);
     });
+
+    it("print all Lyrics", function() {
+        var str = "";
+        for(var i = 99; i >= 0; i--) {
+            str += practice(i);
+        }
+        expect(str).toEqual(expectCommonLyrics);
+    })
 })

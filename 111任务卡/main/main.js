@@ -23,30 +23,35 @@
 // module.exports = practice;
 
 module.exports = function practice(num) {
-    
-    var str = "";
-    for(var i = num; i >= 0; i--) {
+    function printLyric(i) {
+        var str = "";
         if(i > 2) {
-            for(num = i; num > 2; num--) {
-                str += num + " bottles of beer on the wall, " + num + " bottles of beer.\n" +
-                        "Take one down and pass it around, " + (num - 1) + " bottles of beer on the wall.\n" ;
-            }
+            str = num + " bottles of beer on the wall, " + num + " bottles of beer.\n" +
+                    "Take one down and pass it around, " + (num - 1) + " bottles of beer on the wall.\n" ;
             return str;
+            
         }
         else if(i == 2) {
-            var str_2 = i + " bottles of beer on the wall, " + i + " bottles of beer.\n" +
+            str = i + " bottles of beer on the wall, " + i + " bottles of beer.\n" +
                     "Take one down and pass it around, " + (i - 1) + " bottle of beer on the wall.\n" 
-            return str_2;
+            return str;
         }
         else if(i == 1) {
-            var str_1 = i + " bottle of beer on the wall, "+ i +" bottle of beer.\n" +
+            str = i + " bottle of beer on the wall, "+ i +" bottle of beer.\n" +
                         "Take one down and pass it around, no more bottles of beer on the wall.\n";
-            return str_1;
+            return str;
         }
         else if(i == 0) {
-            var str_0 = "No more bottles of beer on the wall, no more bottles of beer.\n" +
+            str = "No more bottles of beer on the wall, no more bottles of beer.\n" +
                         "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
-            return str_0;
+            return str;
         }
     }
+
+    var printstr = "";
+    for(var j = num; j >= 0; j--) {
+        printstr += printLyric(j);
+    }
+    return printstr;
+    
 }
