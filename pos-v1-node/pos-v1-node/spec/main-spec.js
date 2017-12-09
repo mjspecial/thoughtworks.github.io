@@ -9,7 +9,7 @@ describe('pos', function () {
 
     beforeEach(function () {
         allItems = loadAllItems();
-        Promotions = loadPromotions();
+        // Promotions = loadPromotions()
         inputs = [
             'ITEM000001',
             'ITEM000001',
@@ -23,16 +23,19 @@ describe('pos', function () {
         ];
     });
     
-    var input = [{"barcode":"ITEM000001","count":5}, {"barcode":"ITEM000003","count":2}, {"barcode":"ITEM000005","count":3}];
+    
     it("formatted input", function() {
+        var  input= [{"barcode":"ITEM000001","count":5}, {"barcode":"ITEM000003","count":2}, {"barcode":"ITEM000005","count":3}];
         var expectinput = getformatinput(inputs);
         expect(expectinput).toEqual(input);
     });
 
-    var infro = [{"barcode":"ITEM000001","name":"雪碧","unit":"瓶","count":5,"price":3.00}, 
-                {"barcode":"ITEM000003","name":"荔枝","unit":"斤","count":2,"price":15.00},
-                {"barcode":"ITEM000005","name":"方便面","unit":"袋","count":3,"price":4.50}]
+    
     it("acquire all infromation of goods", function() {
+        var  input= [{"barcode":"ITEM000001","count":5}, {"barcode":"ITEM000003","count":2}, {"barcode":"ITEM000005","count":3}];
+        var infro = [{"barcode":"ITEM000001","name":"雪碧","unit":"瓶","count":5,"price":3.00}, 
+                    {"barcode":"ITEM000003","name":"荔枝","unit":"斤","count":2,"price":15.00},
+                    {"barcode":"ITEM000005","name":"方便面","unit":"袋","count":3,"price":4.50}];
         var expectinfro = getinfroGoods(input,allItems);
         expect(expectinfro).toEqual(infro);
     });

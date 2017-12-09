@@ -1,5 +1,6 @@
-// const loadAllItems = require("./datbase");
-// const loadPromotions = require("./datbase");
+const datbase= require("./datbase");
+const loadAllItems = datbase.loadAllItems;
+const loadPromotions = datbase.loadPromotions;
 // module.exports = function main(inputs) {
 //     var allItems = loadAllItems();
 //     // var Promotions = loadPromotions(); 
@@ -132,8 +133,8 @@
 
 // };
 
-const datbase = require("./datbase");
-
+// const datbase = require("./datbase");
+// var allItems = loadAllItems;
 function getformatinput(inputs) {
     var barcode,
     count = 1,
@@ -167,12 +168,15 @@ function getinfroGoods(input,allItems) {
     var name,price,unit,count,barcode;
     for(var i = 0; i< input.length; i++) {
         for(var j = 0; j < 6; j++) {
-            if(input[i].barcode == allItems[j].barcode) {
-                name = allItems[j].name;
-                price = allItems[j].price;
-                unit = allItems[j].unit;
+            console.log(input[i].barcode);
+            console.log(loadAllItems[j].barcode);
+            if(input[i].barcode == loadAllItems[j].barcode) {
+    
+                name = loadAllItems[j].name;
+                price = loadAllItems[j].price;
+                unit = loadAllItems[j].unit;
                 count = parseInt(input[i].count);
-                barcode = allItems[j].barcode;
+                barcode = loadAllItems[j].barcode;
                 getAllGoods[i] = {"name":name,"price":price,"unit":unit, "barcode":barcode, "count":count};
             }
         }
