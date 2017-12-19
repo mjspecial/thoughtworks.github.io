@@ -20,17 +20,17 @@ function main() {
     }else if(num == 2) {
         printScore();
     }else if(num == 3) {
-        exit();
+        return null;
     }
 
-    main();
 }
 
 //马娟,201514620224,汉,15网络2,数学：100,语文：99,英语：98,编程：97
+//刘林,201514620222,汉,15网络2,数学：90,语文：89,英语：88,编程：87
 function addStudent() {
     var infro = require('cli-interact').question("请输入学生信息（格式：姓名, 学号, 民族, 班级, 学科: 成绩, ...），按回车提交：");
     var stuInfro = infro.split(',');
-    if(stuInfro.length !==8 && stuInfro[4].split(':') == -1) {
+    if(stuInfro.length !==8) {
         console.log('请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）');
         addStudent();
     }else {
@@ -51,6 +51,7 @@ function addStudent() {
         student["averge"] = sum/4;
         allStudent.push(student);
         console.log("学生" +stuInfro[0]+ "的成绩被添加\n");
+        main();
     }
 
 }
@@ -58,7 +59,46 @@ function addStudent() {
 
 function printScore() {
     var infromation = require('cli-interact').question("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：");
-    if(infromation.split(',') == -1) {
-        console.log()
+    var stuNum = infromation.split(',');
+    if(isNaN(stuNum[0])) {
+        console.log("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...）");
+        printScore();
+    }else {
+        console.log("成绩单\n姓名|数学|语文|英语|编程|平均分|总分");
+        console.log("========================");
+        var sum_middle = [];
+        for(var i = 0; i < stuNum.length; i++) {
+            var arr = stuNum[i];
+            let student = allStudent[arr];
+            var str = '';
+            str = student["name"] +' | '+
+                    student["math"] + ' | '+
+                    student["chinese"] + ' | '+
+                    student["english"] + ' | '+
+                    student["programme"] + ' | '+
+                    student["averge"] + ' | '+
+                    student["total"] + '\n';
+            console.log(str);
+            sum_middle.push(student["total"]);
+        }
+        console.log("========================");
+
+        var sum_total = 0;
+        for(var j = 0; j < allStudent.length; j++) {
+            sum_total += allStudent[j].total;
+        }
+        var sum_averge = 0;
+        sum_averge = sum_total/allStudent.length;
+        console.log("全班总分平均数：" + sum_averge);
+
+        var middle = 0;
+        if(sum_middle.length % 2 == 0) {
+             middle = (sum_middle[sum_middle.length / 2] + sum_middle[sum_middle.length / 2 + 1])/2;
+        }else {
+            middle = sum_middle[parseInt(sum_middle.length/2)+1];
+        }
+        console.log("全班总分中位数：" + middle);
     }
+
+    main();
 }
