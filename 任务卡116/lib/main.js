@@ -1,6 +1,5 @@
 "use strict"
 
-module.exports = main;
 let student = require("../lib/student");
 
 let allStudent = [];
@@ -16,7 +15,7 @@ function main() {
     var num = query('请输入你的选择（1~3）：');
 
     if(num == 1) {
-        addStudent();
+        addStudent(input);
     }else if(num == 2) {
         printScore();
     }else if(num == 3) {
@@ -27,7 +26,7 @@ function main() {
 
 //马娟,201514620224,汉,15网络2,数学:100,语文:99,英语:98,编程:97   冒号要与切割的冒号的中英文的输入时相同的
 //刘林,201514620222,汉,15网络2,数学:90,语文:89,英语:88,编程:87
-function addStudent() {
+function addStudent(input) {
     var infro = require('cli-interact').question("请输入学生信息（格式：姓名, 学号, 民族, 班级, 学科: 成绩, ...），按回车提交：");
     var stuInfro = infro.split(',');
     if(stuInfro.length !==8) {
@@ -111,3 +110,7 @@ function printScore() {
 
     main();
 }
+
+module.exports.main = main;
+module.exports.addStudent = addStudent;
+module.exports.printScore = printScore;
