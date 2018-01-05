@@ -21,6 +21,7 @@ describe('main()', () => {
     //     for(var i=0; i<2; i++) {
     //         main.addStudent(input_stuinfro[i]);
     //         expect(console.log.args.join()).toBe(result[i]);
+    //         console.log(expect(console.log.args.join()).toBe(result[i]));
     //     }
     // });
 });
